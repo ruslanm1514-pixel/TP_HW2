@@ -88,3 +88,18 @@ class ShoppingList:
         new_list = ShoppingList()
         new_list._items = self._items.copy() + other._items.copy()
         return new_list
+
+class DietaryRecipe(Recipe):
+    def __init__(self, title, diet_type, ingredients = None):
+        if ingredients == None:
+            ingredients = []
+        self.diet_type = diet_type
+        super().__init__(title, ingredients)
+
+    def scale(self, ratio):
+        if not self.is_valid_ratio(ratio):
+            raise ValueError()
+        return DietaryRecipe(self.title, self.diet_type, super().scale(ratio).ingredients)
+
+    def __str__(self):
+        return f"[{self.diet_type}] {super().__str__()}"
