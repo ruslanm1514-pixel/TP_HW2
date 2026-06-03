@@ -1,4 +1,5 @@
 import pytest
+from main import Ingredient, Recipe, ShoppingList, DietaryRecipe
 
 def test_ingredient():
     test_1 = Ingredient("Мука", 500, "г")
